@@ -1,0 +1,20 @@
+#CPU Utilisation
+
+Processes can operate, take a break as another process takes its place
+so as to avoid CPU idle time
+
+GO routines are concurrent methods
+
+
+#Concurrency & Parallelism
+
+Parallelism - take one method and replicate across all CPU cores
+Multi-threaded architecture across multiple cores
+
+
+#Synchronous vs Asynchronous
+
+Synchronous - functions process after the previous process has completed
+
+Asynchronous - functions are running concurrently, so they are not waiting for other functions
+This is achieved through inter-process communication (IPC)
