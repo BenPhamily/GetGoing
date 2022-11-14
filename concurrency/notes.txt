@@ -18,3 +18,12 @@ Synchronous - functions process after the previous process has completed
 
 Asynchronous - functions are running concurrently, so they are not waiting for other functions
 This is achieved through inter-process communication (IPC)
+
+
+#Channels
+Problem arises when producer and multiple consumers need to be in sync with each other
+Channels are queues with mutexes
+Queue size of 1 means the producer can not produce another item until the item in the channel is consumed
+Unbuffered channel
+
+Buffered channel size > 1
