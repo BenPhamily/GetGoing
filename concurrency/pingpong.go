@@ -35,8 +35,6 @@ func main() {
 	// Initialise main go routine by sending into the ping channel
 	ping <- 1
 
-	for {
-		// Block main thread until interrupt
-		time.Sleep(time.Second)
-	}
+	// Block main thread until interrupt
+	select {}
 }
