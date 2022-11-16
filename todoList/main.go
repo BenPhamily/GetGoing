@@ -2,9 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
-	"https://github.com/BenPhamily/GetGoing/blob/PC-Workspace/todoList/structs"
+
+	"github.com/BenPhamily/getgoing/todoList/structs"
 )
 
 func main() {
@@ -20,11 +20,5 @@ func main() {
 		}
 	})
 
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("Request received")
-		fmt.Println(r.Method)
-		w.Write([]byte("Hello world go"))
-	})
-
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":3000", mux)
 }
