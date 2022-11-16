@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	// "https://github.com/BenPhamily/GetGoing/todoList/structs"
+	"https://github.com/BenPhamily/GetGoing/blob/PC-Workspace/todoList/structs"
 )
 
 func main() {
@@ -12,7 +12,11 @@ func main() {
 
 	mux.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
-			json.NewEncoder(w)
+			data := structs.Response{
+				Code: http.StatusOK,
+				Body: "pong",
+			}
+			json.NewEncoder(w).Encode(data)
 		}
 	})
 
