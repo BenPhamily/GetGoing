@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/BenPhamily/getgoing/todoList/structs"
+	"github.com/BenPhamily/GetGoing/todoList/structs"
 )
 
 func main() {
