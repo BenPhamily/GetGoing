@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -12,6 +14,7 @@ import (
 func main() {
 	mux := controller.Register()
 	db := model.Connect()
-	defer db.Close()
+	defer db.Disconnect(context.Background())
+	fmt.Println("Serving...")
 	log.Fatal(http.ListenAndServe(":3000", mux))
 }

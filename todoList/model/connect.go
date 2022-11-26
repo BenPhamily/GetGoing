@@ -1,23 +1,30 @@
 package model
 
 import (
-	"database/sql"
+	"context"
 	"fmt"
 	"log"
+	"time"
 
-	"github.com/BenPhamily/GetGoing/todoList/controller"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func Connect() *sql.DB {
-	db, err := sql.Open(
-		"mysql", controller.GoDotEnvVariable("DSN"),
-	)
+var con *mongo.Client
 
+func Connect() *mongo.Client {
+	serverAPIOptions := options.ServerAPI(options.ServerAPIVersion1)
+	clientOptions := options.Client().
+		ApplyURI(GoDotEnvVariable("DSN")).
+		SetServerAPIOptions(serverAPIOptions)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	con = client
 	fmt.Println("Connected to the database")
-
-	return db
+	return client
 }
