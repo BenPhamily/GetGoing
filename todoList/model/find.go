@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/BenPhamily/GetGoing/todoList/views"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
@@ -19,10 +20,7 @@ func Find() error {
 	defer cur.Close(context.Background())
 	for cur.Next(context.Background()) {
 		// To decode into a struct, use cursor.Decode()
-		result := struct {
-			name string
-			todo string
-		}{}
+		result := views.Todo{}
 		err := cur.Decode(&result)
 		if err != nil {
 			log.Fatal(err)
