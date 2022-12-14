@@ -7,11 +7,11 @@ import (
 	"github.com/BenPhamily/GetGoing/todoList/views"
 )
 
-func CreateTodo() error {
+func CreateTodo(name, todo string) error {
 	collection := con.Database("TodoList").Collection("Todo")
 	data := views.Todo{
-		Name: "Ben",
-		Todo: "this project",
+		Name: name,
+		Todo: todo,
 	}
 	res, err := collection.InsertOne(context.Background(), data)
 	if err != nil {

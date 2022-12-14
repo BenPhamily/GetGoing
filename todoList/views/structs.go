@@ -9,3 +9,8 @@ type Todo struct {
 	Name string `bson:"name"`
 	Todo string `bson:"todo"`
 }
+
+type PostRequest struct {
+	Name string `json:"name"`
+	Todo string `json:"todo"`
+}
